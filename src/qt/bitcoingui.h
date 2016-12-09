@@ -21,7 +21,7 @@ class Notificator;
 class RPCConsole;
 class Downloader;
 class WebView;
-class GetVeriCoinPage;
+class GetsweetPage;
 class ForumsPage;
 class BlockchainPage;
 
@@ -82,7 +82,7 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SendBitCoinsDialog *sendBitCoinsPage;
-    GetVeriCoinPage *getVeriCoinPage;
+    GetsweetPage *getsweetPage;
     ForumsPage *forumsPage;
     BlockchainPage *blockchainPage;
 
@@ -105,7 +105,7 @@ private:
     QAction *logoutAction;
     QAction *sendCoinsAction;
     QAction *sendBitCoinsAction;
-    QAction *getVeriCoinAction;
+    QAction *getsweetAction;
     QAction *forumsAction;
     QAction *blockchainAction;
     QAction *addressBookAction;
@@ -204,8 +204,8 @@ private slots:
     void gotoForumsPage();
     /** Switch to Blockchain page */
     void gotoBlockchainPage();
-    /** Switch to GetVeriCoin page */
-    void gotoGetVeriCoinPage();
+    /** Switch to Getsweet page */
+    void gotoGetsweetPage();
 
     void resizeGUI();
     void logout();

@@ -1,5 +1,5 @@
-#ifndef GETVERICOINPAGE_H
-#define GETVERICOINPAGE_H
+#ifndef GETsweetPAGE_H
+#define GETsweetPAGE_H
 
 #include <QWidget>
 #include <QNetworkAccessManager>
@@ -8,7 +8,7 @@
 #include <QTimer>
 
 namespace Ui {
-    class GetVeriCoinPage;
+    class GetsweetPage;
 }
 class ClientModel;
 class WalletModel;
@@ -18,13 +18,13 @@ class QModelIndex;
 QT_END_NAMESPACE
 
 /** Trade page widget */
-class GetVeriCoinPage : public QWidget
+class GetsweetPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit GetVeriCoinPage(QWidget *parent = 0);
-    ~GetVeriCoinPage();
+    explicit GetsweetPage(QWidget *parent = 0);
+    ~GetsweetPage();
 
     void setModel(ClientModel *clientModel);
     void setModel(WalletModel *walletModel);
@@ -34,7 +34,7 @@ public slots:
 // signals:
 
 private:
-    Ui::GetVeriCoinPage *ui;
+    Ui::GetsweetPage *ui;
     ClientModel *clientModel;
     WalletModel *walletModel;
 
@@ -42,4 +42,4 @@ private slots:
 
 };
 
-#endif // GETVERICOINPAGE_H
+#endif // GETsweetPAGE_H

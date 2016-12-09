@@ -1,4 +1,4 @@
-// Copyright (c) 2013 VeriCoin Developers
+// Copyright (c) 2013 sweet Developers
 
 #ifndef PBKDF2_H
 #define PBKDF2_H

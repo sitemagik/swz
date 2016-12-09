@@ -1,5 +1,5 @@
-#include "getvericoinpage.h"
-#include "ui_getvericoinpage.h"
+#include "getsweetpage.h"
+#include "ui_getsweetpage.h"
 
 #include "clientmodel.h"
 #include "walletmodel.h"
@@ -11,9 +11,9 @@
 
 using namespace GUIUtil;
 
-GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
+GetsweetPage::GetsweetPage(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::GetVeriCoinPage),
+    ui(new Ui::GetsweetPage),
     walletModel(0)
 {
     ui->setupUi(this);
@@ -22,11 +22,11 @@ GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
     if (fNoHeaders)
         GUIUtil::header(this, QString(""));
     else
-        GUIUtil::header(this, QString(":images/headerGetVeriCoin"));
+        GUIUtil::header(this, QString(":images/headerGetsweet"));
     this->layout()->setContentsMargins(0, HEADER_HEIGHT, 0, 0);
 
-    CookieJar *getVeriCoinJar = new CookieJar;
-    ui->webView->page()->networkAccessManager()->setCookieJar(getVeriCoinJar);
+    CookieJar *getsweetJar = new CookieJar;
+    ui->webView->page()->networkAccessManager()->setCookieJar(getsweetJar);
 
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAsNeeded);
     ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
@@ -45,15 +45,15 @@ GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
     connect(ui->reload, SIGNAL(clicked()), ui->webView, SLOT(myReload()));
 }
 
-GetVeriCoinPage::~GetVeriCoinPage()
+GetsweetPage::~GetsweetPage()
 {
     delete ui;
 }
 
-void GetVeriCoinPage::setModel(WalletModel *model)
+void GetsweetPage::setModel(WalletModel *model)
 {
     this->walletModel = model;
 
-    QUrl url(QString(walletUrl).append("wallet/getvericoin.php"));
+    QUrl url(QString(walletUrl).append("wallet/getsweet.php"));
     ui->webView->myOpenUrl(url);
 }

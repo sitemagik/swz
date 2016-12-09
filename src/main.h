@@ -701,7 +701,7 @@ public:
     bool CheckTransaction() const;
     bool AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs=true, bool* pfMissingInputs=NULL);
     bool GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const;  // ppcoin: get transaction coin age
-    bool GetStakeTime(CTxDB& txdb, uint64_t& nStakeTime, CBlockIndex* pindexPrev) const;  // VeriCoin: get transaction staketime
+    bool GetStakeTime(CTxDB& txdb, uint64_t& nStakeTime, CBlockIndex* pindexPrev) const;  // sweet: get transaction staketime
 
 protected:
     const CTxOut& GetOutputFor(const CTxIn& input, const MapPrevTx& inputs) const;

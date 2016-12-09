@@ -1,2 +1,2 @@
-debian/bin/vericoind usr/bin
-src/vericoind usr/lib/vericoin
+debian/bin/sweetd usr/bin
+src/sweetd usr/lib/sweet

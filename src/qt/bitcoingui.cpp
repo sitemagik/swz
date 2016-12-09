@@ -30,10 +30,10 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "rpcconsole.h"
-#include "getvericoinpage.h"
+#include "getsweetpage.h"
 #include "forumspage.h"
 #include "blockchainpage.h"
-#include "ui_getvericoinpage.h"
+#include "ui_getsweetpage.h"
 #include "ui_forumspage.h"
 #include "ui_blockchainpage.h"
 #include "downloader.h"
@@ -125,7 +125,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     GUIUtil::setFontPixelSizes();
     qApp->setFont(qFont);
 
-    setWindowTitle(tr("VeriCoin Wallet"));
+    setWindowTitle(tr("sweet Wallet"));
     setWindowIcon(QIcon(":icons/bitcoin"));
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
 
@@ -187,8 +187,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create VeriBit Page
     sendBitCoinsPage = new SendBitCoinsDialog(this);
 
-    // Create GetVeriCoin Page
-    getVeriCoinPage = new GetVeriCoinPage();
+    // Create Getsweet Page
+    getsweetPage = new GetsweetPage();
 
     // Create Forums Page
     forumsPage = new ForumsPage();
@@ -208,7 +208,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
     centralWidget->addWidget(sendBitCoinsPage);
-    centralWidget->addWidget(getVeriCoinPage);
+    centralWidget->addWidget(getsweetPage);
     centralWidget->addWidget(forumsPage);
     centralWidget->addWidget(blockchainPage);
     setCentralWidget(centralWidget);
@@ -386,7 +386,7 @@ void BitcoinGUI::lockWalletFeatures(bool lock)
     {
         gotoOverviewPage();
 
-        QSettings settings("VeriCoin", "VeriCoin-Qt");
+        QSettings settings("sweet", "sweet-Qt");
         restoreGeometry(settings.value("geometry").toByteArray());
         restoreState(settings.value("windowState").toByteArray());
 
@@ -415,7 +415,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("Send"), this);
-    sendCoinsAction->setToolTip(tr("Send VeriCoin"));
+    sendCoinsAction->setToolTip(tr("Send sweet"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
@@ -432,20 +432,20 @@ void BitcoinGUI::createActions()
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
-    getVeriCoinAction = new QAction(QIcon(":/icons/getvericoin"), tr("Get VeriCoin"), this);
-    getVeriCoinAction->setToolTip(tr("Buy VeriCoin with Fiat or Bitcoin"));
-    getVeriCoinAction->setCheckable(true);
-    getVeriCoinAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-    tabGroup->addAction(getVeriCoinAction);
+    getsweetAction = new QAction(QIcon(":/icons/getsweet"), tr("Get sweet"), this);
+    getsweetAction->setToolTip(tr("Buy sweet with Fiat or Bitcoin"));
+    getsweetAction->setCheckable(true);
+    getsweetAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(getsweetAction);
 
     forumsAction = new QAction(QIcon(":/icons/forum"), tr("Community"), this);
-    forumsAction->setToolTip(tr("Join the VeriCoin Community\nGet the Latest News"));
+    forumsAction->setToolTip(tr("Join the sweet Community\nGet the Latest News"));
     forumsAction->setCheckable(true);
     forumsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     tabGroup->addAction(forumsAction);
 
     blockchainAction = new QAction(QIcon(":/icons/blockchain"), tr("BlockChain"), this);
-    blockchainAction->setToolTip(tr("Explore the VeriCoin Blockchain"));
+    blockchainAction->setToolTip(tr("Explore the sweet Blockchain"));
     blockchainAction->setCheckable(true);
     blockchainAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
     tabGroup->addAction(blockchainAction);
@@ -458,8 +458,8 @@ void BitcoinGUI::createActions()
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-    connect(getVeriCoinAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(getVeriCoinAction, SIGNAL(triggered()), this, SLOT(gotoGetVeriCoinPage()));
+    connect(getsweetAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(getsweetAction, SIGNAL(triggered()), this, SLOT(gotoGetsweetPage()));
     connect(forumsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(forumsAction, SIGNAL(triggered()), this, SLOT(gotoForumsPage()));
     connect(blockchainAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -472,8 +472,8 @@ void BitcoinGUI::createActions()
     logoutAction = new QAction(QIcon(":/icons/logout"), tr("&Logout"), this);
     logoutAction->setToolTip(tr("Logout and Stop Staking"));
     logoutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
-    aboutAction = new QAction(QIcon(":/icons/about"), tr("&About VeriCoin"), this);
-    aboutAction->setToolTip(tr("Show information about VeriCoin"));
+    aboutAction = new QAction(QIcon(":/icons/about"), tr("&About sweet"), this);
+    aboutAction->setToolTip(tr("Show information about sweet"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutPostAction = new QAction(QIcon(":/icons/PoSTicon"), tr("&About PoST"), this);
     aboutPostAction->setToolTip(tr("Show information about PoST protocol"));
@@ -482,7 +482,7 @@ void BitcoinGUI::createActions()
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options"), this);
-    optionsAction->setToolTip(tr("Modify configuration options for VeriCoin"));
+    optionsAction->setToolTip(tr("Modify configuration options for sweet"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet"), this);
@@ -508,10 +508,10 @@ void BitcoinGUI::createActions()
     verifyMessageAction = new QAction(QIcon(":/icons/verify"), tr("&Verify Message"), this);
     checkForUpdateAction = new QAction(QIcon(":/icons/update"), tr("Check For &Update"), this);
     checkForUpdateAction->setToolTip(tr("Check for a new version of the wallet and update."));
-    forumAction = new QAction(QIcon(":/icons/bitcoin"), tr("VeriCoin &Forums"), this);
-    forumAction->setToolTip(tr("Go to the VeriCoin forums."));
-    webAction = new QAction(QIcon(":/icons/site"), tr("www.vericoin.info"), this);
-    webAction->setToolTip(tr("Go to VeriCoin website."));
+    forumAction = new QAction(QIcon(":/icons/bitcoin"), tr("sweet &Forums"), this);
+    forumAction->setToolTip(tr("Go to the sweet forums."));
+    webAction = new QAction(QIcon(":/icons/site"), tr("www.sweet.info"), this);
+    webAction->setToolTip(tr("Go to sweet website."));
 
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export Data"), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
@@ -613,7 +613,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
-    toolbar->addAction(getVeriCoinAction);
+    toolbar->addAction(getsweetAction);
     toolbar->addAction(forumsAction);
     toolbar->addAction(blockchainAction);
 }
@@ -635,7 +635,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("VeriCoin Wallet") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("sweet Wallet") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -678,7 +678,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         transactionView->setModel(walletModel);
         addressBookPage->setModel(walletModel->getAddressTableModel());
         sendBitCoinsPage->setModel(walletModel);
-        getVeriCoinPage->setModel(walletModel);
+        getsweetPage->setModel(walletModel);
         forumsPage->setModel(walletModel);
         blockchainPage->setModel(walletModel);
 
@@ -709,7 +709,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("VeriCoin Wallet"));
+    trayIcon->setToolTip(tr("sweet Wallet"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -837,7 +837,7 @@ void BitcoinGUI::setNumConnections(int count)
     QString connectionlabel = connections + label;
     connectionsLabel->setText(QString(connectionlabel));
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(72,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%1 active connection%2 to the VeriCoin network").arg(count).arg(count == 1 ? "" : "s"));
+    labelConnectionsIcon->setToolTip(tr("%1 active connection%2 to the sweet network").arg(count).arg(count == 1 ? "" : "s"));
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
@@ -990,7 +990,7 @@ void BitcoinGUI::changeEvent(QEvent *e)
 
 void BitcoinGUI::exitApp()
 {
-    QSettings settings("VeriCoin", "VeriCoin-Qt");
+    QSettings settings("sweet", "sweet-Qt");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
 
@@ -1031,7 +1031,7 @@ void BitcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
         tr("This transaction is over the size limit.  You can still send it for a fee of %1, "
           "which goes to the nodes that process your transaction and helps to support the network.  "
           "Do you want to pay the fee?").arg(
-                BitcoinUnits::formatWithUnitFee(BitcoinUnits::VRC, nFeeRequired));
+                BitcoinUnits::formatWithUnitFee(BitcoinUnits::swzo, nFeeRequired));
     QMessageBox::StandardButton retval = QMessageBox::question(
           this, tr("Confirm transaction fee"), strMessage,
           QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Yes);
@@ -1169,10 +1169,10 @@ void BitcoinGUI::gotoSendBitCoinsPage()
     */
 }
 
-void BitcoinGUI::gotoGetVeriCoinPage()
+void BitcoinGUI::gotoGetsweetPage()
 {
-    getVeriCoinAction->setChecked(true);
-    centralWidget->setCurrentWidget(getVeriCoinPage);
+    getsweetAction->setChecked(true);
+    centralWidget->setCurrentWidget(getsweetPage);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -1275,7 +1275,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         else if (nValidUrisFoundBit)
             gotoSendBitCoinsPage();
         else
-            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid VeriCoin address or malformed URI parameters."));
+            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid sweet address or malformed URI parameters."));
     }
 
     event->acceptProposedAction();
@@ -1295,7 +1295,7 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendBitCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid VeriCoin address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid sweet address or malformed URI parameters."));
 }
 
 void BitcoinGUI::setEncryptionStatus(int status)
@@ -1404,7 +1404,7 @@ void BitcoinGUI::exportPrivKey()
         if (!address.SetString(strAddress))
         {
             QMessageBox::warning(this, tr("Export Private Key"),
-                tr("This is an invalid VeriCoin address"),
+                tr("This is an invalid sweet address"),
                 QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
@@ -1429,7 +1429,7 @@ void BitcoinGUI::exportPrivKey()
         std::string privkey = CBitcoinSecret(vchSecret, fCompressed).ToString();
         QString qprivkey = QString::fromStdString(privkey);
         QMessageBox::warning(this, tr("Export Private Key"),
-            tr("This is the private key:\n%1 \n\nAssociated with this VeriCoin address: \n%2\n\nCopy to secure location, this allows access to coins.").arg(qprivkey).arg(qstrAddress),
+            tr("This is the private key:\n%1 \n\nAssociated with this sweet address: \n%2\n\nCopy to secure location, this allows access to coins.").arg(qprivkey).arg(qstrAddress),
             QMessageBox::Ok, QMessageBox::Ok);
         vchSecret.clear(), privkey.clear(), qprivkey.clear(); //ensure memory is cleared once ok is pressed
     }
@@ -1812,7 +1812,7 @@ void BitcoinGUI::checkForUpdate()
 
         checkForUpdateActionEnabled(false); // Sets back to true when dialog closes.
 
-        std::string basename = GetArg("-vFileName","vericoin-qt");
+        std::string basename = GetArg("-vFileName","sweet-qt");
         fileName = fileName / basename.c_str();
         url.setUrl(QString(walletDownloadsUrl).append(basename.c_str()));
 

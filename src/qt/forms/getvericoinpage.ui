@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GetVeriCoinPage</class>
- <widget class="QWidget" name="GetVeriCoinPage">
+ <class>GetsweetPage</class>
+ <widget class="QWidget" name="GetsweetPage">
   <property name="geometry">
    <rect>
     <x>0</x>

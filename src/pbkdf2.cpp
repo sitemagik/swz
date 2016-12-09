@@ -1,4 +1,4 @@
-// Copyright (c) 2013 VeriCoin Developers
+// Copyright (c) 2013 sweet Developers
 
 #include <string.h>
 #include "pbkdf2.h"

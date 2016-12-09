@@ -15,9 +15,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent, WalletModel *wModel):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(VRC);
-    unitlist.append(mVRC);
-    unitlist.append(uVRC);
+    unitlist.append(swzo);
+    unitlist.append(mswzo);
+    unitlist.append(uswzo);
     return unitlist;
 }
 
@@ -25,9 +25,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case VRC:
-    case mVRC:
-    case uVRC:
+    case swzo:
+    case mswzo:
+    case uswzo:
         return true;
     default:
         return false;
@@ -38,9 +38,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case VRC: return QString("VRC");
-    case mVRC: return QString("mVRC");
-    case uVRC: return QString::fromUtf8("μVRC");
+    case swzo: return QString("swzo");
+    case mswzo: return QString("mswzo");
+    case uswzo: return QString::fromUtf8("μswzo");
     default: return QString("???");
     }
 }
@@ -49,9 +49,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case VRC: return QString("VeriCoins");
-    case mVRC: return QString("Milli-VeriCoins (1 / 1,000)");
-    case uVRC: return QString("Micro-VeriCoins (1 / 1,000,000)");
+    case swzo: return QString("sweets");
+    case mswzo: return QString("Milli-sweets (1 / 1,000)");
+    case uswzo: return QString("Micro-sweets (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -60,9 +60,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case VRC:  return 100000000;
-    case mVRC: return 100000;
-    case uVRC: return 100;
+    case swzo:  return 100000000;
+    case mswzo: return 100000;
+    case uswzo: return 100;
     default:   return 100000000;
     }
 }
@@ -71,9 +71,9 @@ int BitcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case VRC: return 8; // 21,000,000 (# digits, without commas)
-    case mVRC: return 11; // 21,000,000,000
-    case uVRC: return 14; // 21,000,000,000,000
+    case swzo: return 8; // 21,000,000 (# digits, without commas)
+    case mswzo: return 11; // 21,000,000,000
+    case uswzo: return 14; // 21,000,000,000,000
     default: return 0;
     }
 }
@@ -82,9 +82,9 @@ int BitcoinUnits::maxdecimals(int unit)
 {
     switch(unit)
     {
-        case VRC: return 8;
-        case mVRC: return 5;
-        case uVRC: return 2;
+        case swzo: return 8;
+        case mswzo: return 5;
+        case uswzo: return 2;
         default: return 0;
     }
 }

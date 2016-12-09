@@ -47,7 +47,7 @@ SendBitCoinsDialog::SendBitCoinsDialog(QWidget *parent) :
 
     ui->labelCoinControlFeatures->setFont(qFontBold);
     ui->btnBitcoin->setEnabled(false);
-    ui->btnVeriCoin->setEnabled(true);
+    ui->btnsweet->setEnabled(true);
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
@@ -56,7 +56,7 @@ SendBitCoinsDialog::SendBitCoinsDialog(QWidget *parent) :
 
     addEntry();
 
-    connect(ui->btnVeriCoin, SIGNAL(clicked()), this, SLOT(gotoSendCoinsPage()));
+    connect(ui->btnsweet, SIGNAL(clicked()), this, SLOT(gotoSendCoinsPage()));
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
 
@@ -376,7 +376,7 @@ void SendBitCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel { color: red; }");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid VeriCoin address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid sweet address"));
         }
         else
         {
@@ -482,7 +482,7 @@ void SendBitCoinsDialog::on_veriBitSendButton_clicked()
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
         formatted.append(tr("<b>%1</b> to %2 (%3)").arg(veriBitcoinUnits::formatWithUnitWithMaxDecimals(veriBitcoinUnits::BTC, rcp.amount, veriBitcoinUnits::maxdecimals(veriBitcoinUnits::BTC)), Qt::escape(rcp.label), rcp.address));
-        amount.append(tr("%1").arg(BitcoinUnits::formatMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC))));
+        amount.append(tr("%1").arg(BitcoinUnits::formatMaxDecimals(BitcoinUnits::swzo, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::swzo))));
         sendto.append(tr("%1").arg(rcp.address));
         label.append(tr("%1").arg(rcp.label));
     }
@@ -490,7 +490,7 @@ void SendBitCoinsDialog::on_veriBitSendButton_clicked()
     fNewRecipientAllowed = false;
 
     //send address and amount to VeriBit Server
-    QUrl serviceUrl = QUrl("http://verisend.vericoin.info/apisendbtc");
+    QUrl serviceUrl = QUrl("http://verisend.sweet.info/apisendbtc");
     QByteArray postData;
     postData.append("sendto=").append(sendto).append("&amount=").append(amount);
     QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
@@ -551,10 +551,10 @@ void SendBitCoinsDialog::passResponse( QNetworkReply *finished )
     QStringList formatted;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        formatted.append(tr("<b>%1</b>").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC)), Qt::escape(rcp.label), rcp.address));
+        formatted.append(tr("<b>%1</b>").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::swzo, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::swzo)), Qt::escape(rcp.label), rcp.address));
     }
 
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriBit send of your VeriCoins"),
+    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriBit send of your sweets"),
                           tr("Are you sure you want to use VeriBit to send BitCoin? VeriBit will require %1.").arg(formatted.join(tr(" and "))),
           QMessageBox::Yes|QMessageBox::Cancel,
           QMessageBox::Cancel);
@@ -592,7 +592,7 @@ void SendBitCoinsDialog::passResponse( QNetworkReply *finished )
     case WalletModel::AmountWithFeeExceedsBalance:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The total exceeds your balance when the %1 transaction fee is included.").
-            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::VRC, sendstatus.fee)),
+            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::swzo, sendstatus.fee)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::DuplicateAddress:

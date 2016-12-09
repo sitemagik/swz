@@ -1,6 +1,6 @@
 [Protocol]
-exec=vericoin-qt '%u'
-protocol=vericoin
+exec=sweet-qt '%u'
+protocol=sweet
 input=none
 output=none
 helper=true

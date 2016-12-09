@@ -1,5 +1,5 @@
-vericoin-qt usr/bin
+sweet-qt usr/bin
 share/pixmaps/bitcoin32.xpm usr/share/pixmaps
 share/pixmaps/bitcoin80.xpm usr/share/pixmaps
-debian/vericoin-qt.desktop usr/share/applications
-debian/vericoin-qt.protocol usr/share/kde4/services/
+debian/sweet-qt.desktop usr/share/applications
+debian/sweet-qt.protocol usr/share/kde4/services/

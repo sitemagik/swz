@@ -11,23 +11,23 @@ else
     arch="32bit"
 fi
 
-if [ -f VeriCoin-Qt.app/Contents/MacOS/VeriCoin-Qt ] && [ -f vericoin.conf ] && [ -f README ]; then
-    echo "Building VeriCoin_${version}_${arch}.pkg ...\n"
-    cp vericoin.conf VeriCoin-Qt.app/Contents/MacOS/
-    cp README VeriCoin-Qt.app/Contents/MacOS/
+if [ -f sweet-Qt.app/Contents/MacOS/sweet-Qt ] && [ -f sweet.conf ] && [ -f README ]; then
+    echo "Building sweet_${version}_${arch}.pkg ...\n"
+    cp sweet.conf sweet-Qt.app/Contents/MacOS/
+    cp README sweet-Qt.app/Contents/MacOS/
 
     # Remove the old archive
-    if [ -f VeriCoin_${version}_${arch}.pkg ]; then
-        rm -f VeriCoin_${version}_${arch}.pkg
+    if [ -f sweet_${version}_${arch}.pkg ]; then
+        rm -f sweet_${version}_${arch}.pkg
     fi
 
     # Deploy the app, create the plist, then build the package.
-    macdeployqt ./VeriCoin-Qt.app -always-overwrite
-    pkgbuild --analyze --root ./VeriCoin-Qt.app share/qt/VeriCoin-Qt.plist
-    pkgbuild --root ./VeriCoin-Qt.app --component-plist share/qt/VeriCoin-Qt.plist --identifier org.vericoin.VeriCoin-Qt --install-location /Applications/VeriCoin-Qt.app VeriCoin_${version}_${arch}.pkg
-    echo "Package created in: $PWD/VeriCoin_${version}_${arch}.pkg\n"
+    macdeployqt ./sweet-Qt.app -always-overwrite
+    pkgbuild --analyze --root ./sweet-Qt.app share/qt/sweet-Qt.plist
+    pkgbuild --root ./sweet-Qt.app --component-plist share/qt/sweet-Qt.plist --identifier org.sweet.sweet-Qt --install-location /Applications/sweet-Qt.app sweet_${version}_${arch}.pkg
+    echo "Package created in: $PWD/sweet_${version}_${arch}.pkg\n"
 else
     echo "Error: Missing files!\n"
-    echo "Run this script from the folder containing VeriCoin-Qt.app, vericoin.conf and README.\n"
+    echo "Run this script from the folder containing sweet-Qt.app, sweet.conf and README.\n"
 fi
 

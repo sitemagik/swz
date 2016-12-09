@@ -1,4 +1,4 @@
-IDI_ICON1 ICON DISCARDABLE "icons/vericoin.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/sweet.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -18,14 +18,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "VeriCoin"
-            VALUE "FileDescription",    "VeriCoin-Qt (OSS GUI client for VeriCoin)"
+            VALUE "CompanyName",        "sweet"
+            VALUE "FileDescription",    "sweet-Qt (OSS GUI client for sweet)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "vericoin-qt"
-            VALUE "LegalCopyright",     "2009-2012 The Bitcoin developers, 2012-2013 The VeriCoin & PPCoin developers"
+            VALUE "InternalName",       "sweet-qt"
+            VALUE "LegalCopyright",     "2009-2012 The Bitcoin developers, 2012-2013 The sweet & PPCoin developers"
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "vericoin-qt.exe"
-            VALUE "ProductName",        "VeriCoin-Qt"
+            VALUE "OriginalFilename",   "sweet-qt.exe"
+            VALUE "ProductName",        "sweet-Qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

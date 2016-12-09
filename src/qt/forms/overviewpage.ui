@@ -136,7 +136,7 @@
           <item>
            <widget class="QLabel" name="labelWalletStatus">
             <property name="toolTip">
-             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the VeriCoin network after a connection is established, but this process has not completed yet.</string>
+             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the sweet network after a connection is established, but this process has not completed yet.</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel { color: #F96910; }</string>
@@ -245,7 +245,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 swzo</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -301,7 +301,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 swzo</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -369,7 +369,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 swzo</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -425,7 +425,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 swzo</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -541,7 +541,7 @@
           <item>
            <widget class="QLabel" name="labelTransactionsStatus">
             <property name="toolTip">
-             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the VeriCoin network after a connection is established, but this process has not completed yet.</string>
+             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the sweet network after a connection is established, but this process has not completed yet.</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel { color: #F96910; }</string>

@@ -125,10 +125,10 @@
        <item>
         <widget class="QCheckBox" name="bitcoinAtStartup">
          <property name="toolTip">
-          <string>Automatically start VeriCoin after logging in to the system.</string>
+          <string>Automatically start sweet after logging in to the system.</string>
          </property>
          <property name="text">
-          <string>&amp;Start VeriCoin on system login</string>
+          <string>&amp;Start sweet on system login</string>
          </property>
         </widget>
        </item>
@@ -165,7 +165,7 @@
        <item>
         <widget class="QCheckBox" name="mapPortUpnp">
          <property name="toolTip">
-          <string>Automatically open the VeriCoin client port on the router. This only works when your router supports UPnP and it is enabled.</string>
+          <string>Automatically open the sweet client port on the router. This only works when your router supports UPnP and it is enabled.</string>
          </property>
          <property name="text">
           <string>Map port using &amp;UPnP</string>
@@ -175,7 +175,7 @@
        <item>
         <widget class="QCheckBox" name="connectSocks">
          <property name="toolTip">
-          <string>Connect to the VeriCoin network through a SOCKS proxy (e.g. when connecting through Tor).</string>
+          <string>Connect to the sweet network through a SOCKS proxy (e.g. when connecting through Tor).</string>
          </property>
          <property name="text">
           <string>&amp;Connect through SOCKS proxy:</string>
@@ -349,7 +349,7 @@
          <item>
           <widget class="QValueComboBox" name="lang">
            <property name="toolTip">
-            <string>The user interface language can be set here. This setting will take effect after restarting VeriCoin.</string>
+            <string>The user interface language can be set here. This setting will take effect after restarting sweet.</string>
            </property>
           </widget>
          </item>
@@ -469,7 +469,7 @@
        <item>
         <widget class="QCheckBox" name="displayAddresses">
          <property name="toolTip">
-          <string>Whether to show VeriCoin addresses in the transaction list or not.</string>
+          <string>Whether to show sweet addresses in the transaction list or not.</string>
          </property>
          <property name="text">
           <string>&amp;Display addresses in transaction list</string>
@@ -554,7 +554,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>VeriSend Entry Ring Node IP address (VeriCoin Ring Node is Default):</string>
+        <string>VeriSend Entry Ring Node IP address (sweet Ring Node is Default):</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="veriSendIP">

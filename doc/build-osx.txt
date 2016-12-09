@@ -3,16 +3,16 @@ Distributed under the MIT/X11 software license, see the accompanying file
 license.txt or http://www.opensource.org/licenses/mit-license.php.  This
 product includes software developed by the OpenSSL Project for use in the
 OpenSSL Toolkit (http://www.openssl.org/).  This product includes cryptographic
-software written by Eric Young (eay@cryptsoft.com) and UPnP software written by
+software written by Eric Young (eay+AEA-cryptsoft.com) and UPnP software written by
 Thomas Bernard.
 
 
-Mac OS X vericoind build instructions
-Laszlo Hanyecz <solar@heliacal.net>
-Douglas Huff <dhuff@jrbobdobbs.org>
+Mac OS X sweetd build instructions
+Laszlo Hanyecz +ADw-solar+AEA-heliacal.net+AD4-
+Douglas Huff +ADw-dhuff+AEA-jrbobdobbs.org+AD4-
 
 
-See readme-qt.rst for instructions on building VeriCoin QT, the
+See readme-qt.rst for instructions on building sweet QT, the
 graphical user interface.
 
 Tested on 10.5 and 10.6 and 10.9.5 intel.  PPC is not supported because it's big-endian.
@@ -25,35 +25,35 @@ everything is available in /usr not just /Developer I think it comes on the DVD
 but you can get the current version from http://developer.apple.com
 
 0.  Download and install xcode from the app store.
-0a. If Xcode 5.X, go to Xcode->Preferences->Downloads and install Comand Line Tools.
+0a. If Xcode 5.X, go to Xcode-+AD4-Preferences-+AD4-Downloads and install Comand Line Tools.
     Otherwise, run 'sudo xcode-select --install' to install the command line tools.
 
 1.  Download and install MacPorts from http://www.macports.org/
 
 1a. (for 10.7 Lion)
-    Edit /opt/local/etc/macports/macports.conf and uncomment "build_arch i386"
+    Edit /opt/local/etc/macports/macports.conf and uncomment +ACI-build+AF8-arch i386+ACI-
 
 2.  Install dependencies from MacPorts
 
 sudo port install boost db48 openssl miniupnpc qt5-mac gcc49 wget
 
-Optionally install qrencode (and set USE_QRCODE=1):
+Optionally install qrencode (and set USE+AF8-QRCODE+AD0-1):
 sudo port install qrencode
 
-2a. You may also need to copy the qt5 makespec folder for macx-g++42 to macx-g++49 if it does not exist, then set the compilers in qmake.conf to gcc-mp-4.9 and g++-mp-4.9.  If using Qt Creator, add the Qt mkspec macx-g++49 to Kits, and add the compiler/path to Compilers.
+2a. You may also need to copy the qt5 makespec folder for macx-g++40- to macx-g++48- if it does not exist, then set the compilers in qmake.conf to gcc-mp-4.9 and gmp-4.9.  If using Qt Creator, add the Qt mkspec macx-g++48- to Kits, and add the compiler/path to Compilers.
 
 3.  Clone the github tree to get the source code:
 
-git clone https://github.com/vericoin/vericoin.git
+git clone https://github.com/sweet/sweet.git
 
-4.  Now you should be able to build vericoind:
+4.  Now you should be able to build sweetd:
 
-cd vericoin/src
+cd sweet/src
 make -f makefile.osx
 
 Run:
-  ./vericoind --help  # for a list of command-line options.
+  ./sweetd --help  +ACM- for a list of command-line options.
 Run
-  ./vericoind -daemon # to start the vericoin daemon.
+  ./sweetd -daemon +ACM- to start the sweet daemon.
 Run
-  ./vericoind help # When the daemon is running, to get a list of RPC commands
+  ./sweetd help +ACM- When the daemon is running, to get a list of RPC commands

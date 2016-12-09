@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = vericoin-qt
+TARGET = sweet-qt
 VERSION = 1.6.5
 USE_QRCODE = 1
 INCLUDEPATH += src src/json src/qt
@@ -20,13 +20,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 # Profiling on linux
 #   Download, build and install: libunwind and gperftools
 #   Include the profiler header "gperftools/profiler.h" in the code to profile
-#   Bracket the code to profile with ProfileStart("vericoin-qt.prof") and ProfileStop() and recompile
-#   Run vericoin-qt through its paces then exit
+#   Bracket the code to profile with ProfileStart("sweet-qt.prof") and ProfileStop() and recompile
+#   Run sweet-qt through its paces then exit
 #   Analyze with:
-#      pprof ./vericoin-qt vericoin-qt.prof
+#      pprof ./sweet-qt sweet-qt.prof
 #   For a graphical view you need to: sudo apt-get install graphviz gv
 #   Then run:
-#      pprof --gv ./vericoin-qt vericoin-qt.prof
+#      pprof --gv ./sweet-qt sweet-qt.prof
 PROFILE = 0
 !macx:!win32:contains(PROFILE, 1) {
 DEFINES += PROFILER
@@ -315,7 +315,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/qvaluecombobox.h \
     src/qt/askpassphrasedialog.h \
     src/qt/askpassphrasepage.h \
-    src/qt/getvericoinpage.h \
+    src/qt/getsweetpage.h \
     src/qt/forumspage.h \
     src/qt/blockchainpage.h \
     src/protocol.h \
@@ -408,7 +408,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/rescandialog.cpp \
     src/qt/cookiejar.cpp \
     src/qt/autosaver.cpp \
-    src/qt/getvericoinpage.cpp \
+    src/qt/getsweetpage.cpp \
     src/qt/forumspage.cpp \
     src/qt/blockchainpage.cpp \
     src/noui.cpp \
@@ -437,7 +437,7 @@ FORMS += \
     src/qt/forms/editaddressdialog.ui \
     src/qt/forms/transactiondescdialog.ui \
     src/qt/forms/overviewpage.ui \
-    src/qt/forms/getvericoinpage.ui \
+    src/qt/forms/getsweetpage.ui \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/sendbitcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
@@ -534,8 +534,8 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/vericoin.icns
-macx:TARGET = "VeriCoin-Qt"
+macx:ICON = src/qt/res/icons/sweet.icns
+macx:TARGET = "sweet-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

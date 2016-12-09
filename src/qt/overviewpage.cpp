@@ -29,7 +29,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::VRC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::swzo)
     {
 
     }
@@ -264,7 +264,7 @@ void OverviewPage::setModel(WalletModel *model)
     ui->stats->load(statsUrl);
     ui->value->load(valueUrl);
 
-    // update the display unit, to not use the default ("VRC")
+    // update the display unit, to not use the default ("swzo")
     updateDisplayUnit();
 }
 
